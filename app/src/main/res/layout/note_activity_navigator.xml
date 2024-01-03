@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/primary100"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_create_node"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_button"
+        android:clickable="true"
+        android:contentDescription="TODO"
+        android:padding="15dp"
+        android:src="@drawable/ic_create"
+        android:tint="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_edit_node"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/rounded_button"
+        android:clickable="true"
+        android:contentDescription="TODO"
+        android:padding="15dp"
+        android:src="@drawable/ic_editing"
+        android:tint="@color/black" />
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -6,12 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical">
+
     <include
         android:id="@+id/note_header"
         layout="@layout/note_activity_header"
         android:visibility="visible"
-        tools:visibility="visible"
-        />
+        tools:visibility="visible"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/note_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/note_cell_layout"
+        tools:itemCount="3"
+        android:layout_weight="1"/>
+
+    <include
+        android:id="@+id/note_navigator"
+        layout="@layout/note_activity_navigator"
+        android:visibility="visible"
+        tools:visibility="visible" />
 
   </androidx.appcompat.widget.LinearLayoutCompat>

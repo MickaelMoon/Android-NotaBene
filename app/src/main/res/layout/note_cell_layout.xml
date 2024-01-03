@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="8dp"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+            <RadioButton
+                android:id="@+id/radio_note"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        <TextView
+            android:id="@+id/title_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Faire les courses pour l'anniversaire de Erwan"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@+id/radio_note"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="340dp"
+            android:textColor="@color/text"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginStart="5dp"
+
+            />
+        <TextView
+            android:id="@+id/date_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="IN TWO WEEKS"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@id/radio_note"
+            app:layout_constraintTop_toBottomOf="@id/title_note"
+            android:textColor="@color/primary100"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginStart="5dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
