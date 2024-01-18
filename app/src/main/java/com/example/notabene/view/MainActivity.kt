@@ -1,7 +1,8 @@
-package com.example.notabene
+package com.example.notabene.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.notabene.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
