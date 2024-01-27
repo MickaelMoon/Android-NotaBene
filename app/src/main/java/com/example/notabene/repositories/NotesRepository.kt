@@ -7,18 +7,10 @@ class NotesRepository(
     private val noteService: NoteApiService
 ) {
 
-    fun getRandomListOfNotes(size: Int): Flowable<List<NoteData>> {
-        return noteService.getOneRandomNoteData(
+    fun getNotesByUserId(userId: String) : Flowable<List<NoteData>> {
+        return noteService.getNotesByUserId(
             "fr_FR",
-            size,
-            "uuid",
-            "counter",
-            "name",
-            "lastName",
-            "date",
-            "text",
-            "phone",
-            "boolean"
+            userId,
         ).map {
             it.data
         }

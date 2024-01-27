@@ -1,14 +1,13 @@
 package com.example.notabene.model
 
-import com.example.messagingapp.model.conversation_model.MessageData
+import com.example.notabene.model.note_model.NoteData;
+import com.example.notabene.model.user_model.UserData;
 
 
 
 data class CompleteNoteDto(
-    val infos: NoteData,
-    val conversations: MutableList<MessageData>
+    val infos: UserData,
+    val notes: MutableList<NoteData>
 ) {
-    fun getFormattedConversationCount(): String = if (this.conversations.size > 99)  "+99" else  this.conversations.size.toString()
 
-    fun getFormattedFullUserName(): String = this.infos.lastName + " " + this.infos.name
 }
