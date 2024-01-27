@@ -6,5 +6,6 @@ data class NoteData (
     val description: String,
     val userId: Int,
     val flagsup: Int,
+    val date: String,
 )
 

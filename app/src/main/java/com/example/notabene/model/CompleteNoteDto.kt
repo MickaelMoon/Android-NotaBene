@@ -6,7 +6,6 @@ import com.example.notabene.model.user_model.UserData;
 
 
 data class CompleteNoteDto(
-    val infos: UserData,
     val notes: MutableList<NoteData>
 ) {
 
