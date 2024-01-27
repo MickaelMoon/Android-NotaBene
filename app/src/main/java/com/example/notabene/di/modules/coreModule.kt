@@ -13,7 +13,7 @@ internal val coreModules = module {
 
 
     // Inject user view model
-    single { NotesViewModel(get(), get()) }
+    single { NotesViewModel(get()) }
 
     // Webservices
     single {

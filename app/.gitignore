@@ -1,1 +1,39 @@
 /build
+/.idea
+# Gradle files
+.gradle/
+build/
+
+# IntelliJ IDEA files
+.idea/
+
+# Compiled Kotlin files
+*.class
+
+# Compiled Java files
+*.jar
+*.war
+*.ear
+
+# Android Studio files
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+/.idea/caches
+/.idea/modules.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.idea/dictionaries
+/.idea/vcs.xml
+/.idea/jsLibraryMappings.xml
+
+# Keystore files
+*.jks
+*.jks.properties
+
+# Generated files
+bin/
+gen/
+out/
