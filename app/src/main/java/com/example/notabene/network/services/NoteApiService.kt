@@ -7,7 +7,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NoteApiService {
-    @GET("/note/getNotesByUserId/{userId}")
+    @GET("/note/getNotesByUser/{userId}")
     fun getNotesByUserId(
         @Path("userId") userId: String,
     ): Flowable<NoteDto>

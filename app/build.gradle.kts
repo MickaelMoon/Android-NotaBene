@@ -7,6 +7,10 @@ android {
     namespace = "com.example.notabene"
     compileSdk = 34
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "com.example.notabene"
         minSdk = 26
@@ -25,6 +29,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String","BASE_URL", "\"http://10.0.2.2:3000/\"")
         }
         release {
             isMinifyEnabled = false
@@ -32,6 +37,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String","BASE_URL", "\"http://localhost:3000/\"")
         }
     }
     compileOptions {
@@ -55,6 +61,10 @@ dependencies {
 
     //UI
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+
+    // HTTP
+    implementation("com.google.code.gson:gson:2.8.9") // Serialization to and from JSON
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
