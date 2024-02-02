@@ -4,28 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity"
     android:background="@color/background"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/note_header"
-        layout="@layout/note_activity_header"
-        android:visibility="visible"
-        tools:visibility="visible"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:background="@drawable/outline_bottom"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NotaBene"
+            android:textStyle="bold"
+            android:textSize="23sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.95"
+            android:textColor="@color/text"
+            android:fontFamily="@font/poppins_bold"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:context=".view.MainActivity">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_to_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/note_recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 tools:listitem="@layout/note_cell_layout"
-                tools:itemCount="3"
-                android:layout_weight="1"/>
+                tools:itemCount="3"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </FrameLayout>
 
-    <include
-        android:id="@+id/note_navigator"
-        layout="@layout/note_activity_navigator"
-        android:visibility="visible"
-        tools:visibility="visible" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/primary100"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
 
-  </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_create_node"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_button"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:padding="15dp"
+            android:src="@drawable/ic_create"
+            android:tint="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_edit_node"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rounded_button"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:padding="15dp"
+            android:src="@drawable/ic_editing"
+            android:tint="@color/black" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
