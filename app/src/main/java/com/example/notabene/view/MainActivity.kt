@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.notabene.R
 import com.example.notabene.di.injectModuleDependencies
 import com.example.notabene.di.parseConfigurationAndAddItToInjectionModules
@@ -19,10 +20,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
-    private val notesRepo: NotesRepository by inject();
+    private val NotesViewModel: NotesViewModel by viewModel()
     private lateinit var recyclerView: RecyclerView
-    private lateinit var manager: RecyclerView.LayoutManager
-    private lateinit var myAdapter: RecyclerView.Adapter<*>
+    private lateinit var swipeToRefreshLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,26 +31,27 @@ class MainActivity : AppCompatActivity() {
         parseConfigurationAndAddItToInjectionModules()
         injectModuleDependencies(this@MainActivity)
 
-        manager = LinearLayoutManager(this)
-        getNotes()
-    }
 
-    private fun getNotes() {
-        this.notesRepo.getNotesByUserId("1").subscribe({ notes ->
-            Log.d("NotesViewModel", notes.toString())
-            this.setUpNotesUserList(notes)
-        }, { error ->
-            println(error)
-        })
-    }
+        this.recyclerView = findViewById(R.id.note_recycler_view)
+        this.swipeToRefreshLayout = findViewById(R.id.swipe_to_refresh_layout)
 
-    private fun setUpNotesUserList(notes: List<NoteData>): List<NoteData> {
-        recyclerView = findViewById<RecyclerView>(R.id.note_recycler_view).apply {
-            layoutManager = manager
-            myAdapter = NotesListAdapter(notes)
-            adapter = myAdapter
+        this.swipeToRefreshLayout.setOnRefreshListener {
+            this.NotesViewModel.getNotesByUserId("1")
         }
-        return notes
+
+        this.observeNoteLiveData()
+    }
+
+    private fun observeNoteLiveData() {
+        NotesViewModel.completeNotesList.observe(this@MainActivity) { notesCompleteData ->
+            setUpNotesUserList(notesCompleteData)
+        }
+    }
+
+    private fun setUpNotesUserList(conversations: List<NoteData>) {
+        val noteAdapter =  NotesListAdapter(conversations)
+        recyclerView.layoutManager = LinearLayoutManager( this)
+        recyclerView.adapter = noteAdapter
     }
 
 

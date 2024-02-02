@@ -14,7 +14,7 @@ class NotesListAdapter(
     private val data: List<NoteData>,
 ): RecyclerView.Adapter<NotesListAdapter.MyNoteViewHolder>() {
 
-    class MyNoteViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+    class MyNoteViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         fun bind(note: NoteData) {
             val noteDescription = view.findViewById<TextView>(R.id.description_note)
             noteDescription.text = note.description
