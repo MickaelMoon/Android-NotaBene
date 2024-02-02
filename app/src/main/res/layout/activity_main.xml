@@ -14,10 +14,6 @@
         android:visibility="visible"
         tools:visibility="visible"/>
 
-<!--        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
-<!--            android:id="@+id/swipe_to_refresh_layout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/note_recycler_view"
                 android:layout_width="match_parent"
@@ -25,7 +21,6 @@
                 tools:listitem="@layout/note_cell_layout"
                 tools:itemCount="3"
                 android:layout_weight="1"/>
-<!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
     <include
         android:id="@+id/note_navigator"

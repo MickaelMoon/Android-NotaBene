@@ -12,7 +12,7 @@ class NotesRepository(
         return noteService.getNotesByUserId(
             userId,
         ).map {
-            it.data
+            it
         }
     }
 }

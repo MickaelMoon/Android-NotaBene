@@ -14,14 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp">
-            <RadioButton
-                android:id="@+id/radio_note"
-                android:layout_width="35dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
+        <RadioButton
+            android:id="@+id/radio_note"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+        />
 
         <TextView
             android:id="@+id/description_note"
