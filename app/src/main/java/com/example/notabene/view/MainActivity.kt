@@ -36,14 +36,14 @@ class MainActivity : AppCompatActivity() {
         this.swipeToRefreshLayout = findViewById(R.id.swipe_to_refresh_layout)
 
         this.swipeToRefreshLayout.setOnRefreshListener {
-            this.NotesViewModel.getNotesByUserId("1")
+            this.notesViewModel.getNotesByUserId("1")
         }
 
         this.observeNoteLiveData()
     }
 
     private fun observeNoteLiveData() {
-        NotesViewModel.completeNotesList.observe(this@MainActivity) { notesCompleteData ->
+        notesViewModel.completeNotesList.observe(this@MainActivity) { notesCompleteData ->
             setUpNotesUserList(notesCompleteData)
         }
     }
