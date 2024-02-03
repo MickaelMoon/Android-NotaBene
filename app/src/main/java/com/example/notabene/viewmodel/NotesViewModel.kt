@@ -14,14 +14,15 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import io.reactivex.rxjava3.subjects.PublishSubject
+import java.util.Date
+import java.util.concurrent.TimeUnit
+
 
 
 class NotesViewModel(
     private val notesRepo: NotesRepository,
 ): ViewModel() {
     private val disposeBag = CompositeDisposable()
-
-//    private val notesData = PublishSubject.create<List<NoteData>>()
 
     // Observables used by the view model to get the users infos only
     private val notesData: BehaviorSubject<List<NoteData>> = BehaviorSubject.createDefault(listOf())
@@ -53,5 +54,7 @@ class NotesViewModel(
             )
         }).addTo(disposeBag)
     }
+
+
 
 }
