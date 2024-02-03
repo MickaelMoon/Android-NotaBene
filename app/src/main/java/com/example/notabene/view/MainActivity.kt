@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
-    private val NotesViewModel: NotesViewModel by viewModel()
+    private val notesViewModel: NotesViewModel by viewModel()
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeToRefreshLayout: SwipeRefreshLayout
 
