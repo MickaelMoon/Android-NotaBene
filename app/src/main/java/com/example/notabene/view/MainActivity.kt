@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpNotesUserList(conversations: List<NoteData>) {
-        val noteAdapter =  NotesListAdapter(conversations)
+    private fun setUpNotesUserList(notes: List<NoteData>) {
+        val noteAdapter =  NotesListAdapter(notes)
         recyclerView.layoutManager = LinearLayoutManager( this)
         recyclerView.adapter = noteAdapter
     }
