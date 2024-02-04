@@ -1,4 +1,4 @@
-package com.example.notabene.model.note_model;
+package com.example.notabene.model.note_model
 
 import java.util.Date
 
@@ -9,5 +9,6 @@ data class NoteData (
     val userId: Int,
     val flagsup: Int,
     val date: Date,
+    val categoryId: Int
 )
 

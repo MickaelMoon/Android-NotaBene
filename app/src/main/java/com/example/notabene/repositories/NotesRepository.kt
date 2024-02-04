@@ -15,4 +15,8 @@ class NotesRepository(
             it
         }
     }
+
+    fun createNote(noteData: NoteData) {
+        noteService.createNote(noteData)
+    }
 }
