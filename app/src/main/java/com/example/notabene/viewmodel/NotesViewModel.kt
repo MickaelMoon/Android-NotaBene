@@ -1,6 +1,7 @@
 package com.example.notabene.viewmodel
 
 
+import android.annotation.SuppressLint
 import android.provider.ContactsContract.CommonDataKinds.Note
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -14,6 +15,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import io.reactivex.rxjava3.subjects.PublishSubject
+import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.concurrent.TimeUnit
 
@@ -57,4 +59,10 @@ class NotesViewModel(
         }).addTo(disposeBag)
     }
 
+    @SuppressLint("SimpleDateFormat")
+    fun createNote(userId: String) {
+        val date: Date = SimpleDateFormat("yyyy-MM-dd").parse("14-02-2024")
+        val noteData = NoteData(400, "Nico", "c nico qui a fait ca", userId.toInt(), 0, date)
+        this.notesRepo.createNote(noteData)
+    }
 }
