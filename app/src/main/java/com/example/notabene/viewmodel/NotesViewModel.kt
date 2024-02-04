@@ -1,14 +1,22 @@
 package com.example.notabene.viewmodel
 
 
+import android.provider.ContactsContract.CommonDataKinds.Note
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.notabene.model.CompleteNoteDto
 import com.example.notabene.model.note_model.NoteData
+import com.example.notabene.model.note_model.NoteDto
 import com.example.notabene.repositories.NotesRepository
+import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.subjects.BehaviorSubject
+import io.reactivex.rxjava3.subjects.PublishSubject
+import java.util.Date
+import java.util.concurrent.TimeUnit
+
 
 
 class NotesViewModel(
@@ -47,11 +55,6 @@ class NotesViewModel(
                 error.message ?: "Default message error"
             )
         }).addTo(disposeBag)
-    }
-
-    fun createNote(userId: String) {
-        val noteData = NoteData(400, "Nico", "c nico qui a fait ca", userId.toInt(), 0, "14/12/2024")
-        this.notesRepo.createNote(noteData)
     }
 
 }
