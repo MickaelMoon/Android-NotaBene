@@ -1,9 +1,11 @@
 package com.example.notabene.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -40,6 +42,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.observeNoteLiveData()
+
+        val button = findViewById<Button>(R.id.button_login)
+        button.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun observeNoteLiveData() {

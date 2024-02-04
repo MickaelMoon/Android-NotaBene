@@ -5,6 +5,7 @@ import com.example.notabene.model.note_model.NoteDto
 
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface NoteApiService {
