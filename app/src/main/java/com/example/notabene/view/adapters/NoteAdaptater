@@ -1,0 +1,28 @@
+package com.example.notabene.view.adapters
+
+import androidx.recyclerview.widget.RecyclerView
+
+lass NoteAdapter(private val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+
+    // ... other methods and variables
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    // ... onCreateViewHolder and onBindViewHolder methods
+
+    inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        // ... other views
+
+        init {
+            // Set click listener for the itemView
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClickListener.onItemClick(position)
+                }
+            }
+        }
+    }
+}
