@@ -45,26 +45,28 @@ class MainActivity : AppCompatActivity() {
 
         val editNodeButton = findViewById<AppCompatImageButton>(R.id.button_edit_node)
 
+        // Set OnClickListener for the "Edit Node" button
         editNodeButton.setOnClickListener {
+            // Get the selected RadioButton from the RadioGroup
+            val selectedRadioButton = getSelectedRadioButton()
+
+            // Pass the selectedRadioButton to ModifyNoteActivity if needed
             val intent = Intent(this, ModifyNoteActivity::class.java)
+            intent.putExtra("selectedRadioButtonId", selectedRadioButton?.id)
             startActivity(intent)
         }
-//        val radioGroup: RadioGroup = findViewById(R.id.radioGroup)
-//
-//        radioGroup.setOnCheckedChangeListener { group, checkedId ->
-//            val selectedRadioButton: RadioButton = findViewById(checkedId)
-//
-//            buttonEditNote = findViewById(R.id.button_edit_node)
-//            buttonEditNote.setOnClickListener {
-//
-//                val selectedNote = selectedRadioButton.isSelected;
-//                val intent = Intent(this, ModifyNoteActivity::class.java)
-//                intent.putExtra("selectedNote", selectedNote)
-//                startActivity(intent)
-//            }
-//        }
-
         this.observeNoteLiveData()
+    }
+
+    private fun getSelectedRadioButton(): RadioButton? {
+        // Find the RadioGroup by its ID
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
+
+        // Get the ID of the selected RadioButton
+        val selectedRadioButtonId = radioGroup.checkedRadioButtonId
+
+        // Find the selected RadioButton by its ID
+        return findViewById(selectedRadioButtonId)
     }
 
     private fun observeNoteLiveData() {
@@ -97,7 +99,7 @@ class MainActivity : AppCompatActivity() {
 
 //    private val usersViewModel: NotesViewModel by viewModel();
 //    private lateinit var notesListRv: RecyclerView
-////    private lateinit var swipeToRefreshLayout: SwipeRefreshLayout;
+//    private lateinit var swipeToRefreshLayout: SwipeRefreshLayout;
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)

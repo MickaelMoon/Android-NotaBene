@@ -1,18 +1,27 @@
 package com.example.notabene.view.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageButton
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notabene.R
 import com.example.notabene.model.note_model.NoteData
 import com.example.notabene.model.note_model.NoteDto
+import com.example.notabene.view.ModifyNoteActivity
 
 
 class NotesListAdapter(
     private val data: List<NoteData>,
+
 ): RecyclerView.Adapter<NotesListAdapter.MyNoteViewHolder>() {
+
+    private lateinit var ModifyNoteActivity: ModifyNoteActivity
 
     class MyNoteViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         fun bind(note: NoteData) {
