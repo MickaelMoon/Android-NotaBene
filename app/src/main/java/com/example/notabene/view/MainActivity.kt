@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeNoteLiveData() {
         notesViewModel.completeNotesList.observe(this@MainActivity) { notesCompleteData ->
             setUpNotesUserList(notesCompleteData)
+            Log.d("MainActivity", notesCompleteData.toString())
         }
     }
 
@@ -75,6 +76,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager( this)
         recyclerView.adapter = noteAdapter
     }
+
+
 
 
 //    private val usersViewModel: NotesViewModel by viewModel();

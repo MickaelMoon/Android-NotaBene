@@ -43,7 +43,8 @@ class NotesViewModel(
                     notes[it].userId,
                     notes[it].flagsup,
                     notes[it].date,
-                    notes[it].categoryId
+                    notes[it].categoryId,
+                    notes[it].category
                 )
             })
         }, { error ->

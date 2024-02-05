@@ -1,5 +1,6 @@
 package com.example.notabene.view.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,45 +17,63 @@ const val EXPIRED: String = "EXPIRED"
 const val WILL_EXPIRE: String = "EXPIRE IN"
 const val DEFAULT_STATUS: String = "EXPIRE TODAY"
 class NotesListAdapter(
-    private val data: List<NoteData>,
+    private val data: List<NoteData>
 ): RecyclerView.Adapter<NotesListAdapter.MyNoteViewHolder>() {
 
     class MyNoteViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
 
+        private fun getCategoryNameFormatted(categoryName: String): String {
+            return "@$categoryName"
+        }
+
+        //        private fun getDateStatusFormatted(date: Date): String {
+//            val currentDate = getCurrentDate()
+//            var status: String = DEFAULT_STATUS
+//            if(date == currentDate){
+//                status = DEFAULT_STATUS
+//            }else if (date.before(currentDate)) {
+//                status = EXPIRED
+//            } else if (date.after(currentDate)) {
+//                val diffInMillies = date.time - currentDate.time
+//                val diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)
+//                status = if(diffInDays.toInt() == 1){
+//                    "$WILL_EXPIRE $diffInDays DAY"
+//                } else{
+//                    "$WILL_EXPIRE $diffInDays DAYS"
+//                }
+//            }
+//            return status
+//        }
         private fun getDateStatusFormatted(date: Date): String {
             val currentDate = getCurrentDate()
-            var status: String = DEFAULT_STATUS
-//            Log.d("NoteDate", noteDate.toString())
-//            Log.d("currentDate", currentDate.toString())
-//            Log.d("NoteDateAfter", noteDate.after(currentDate).toString())
-//            Log.d("NoteDateEquals", noteDate.equals(currentDate).toString())
-            if(date.equals(currentDate)){
-                status = DEFAULT_STATUS
-            }else if (date.before(currentDate)) {
-                status = EXPIRED
-            } else if (date.after(currentDate)) {
-                val diffInMillies = date.time - currentDate.time
-                val diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)
-                if(diffInDays.toInt() == 1){
-                    status = "$WILL_EXPIRE $diffInDays DAY"
+            val status: String = when {
+                date == currentDate -> DEFAULT_STATUS
+                date.before(currentDate) -> EXPIRED
+                date.after(currentDate) -> {
+                    val diffInMillies = date.time - currentDate.time
+                    val diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)
+                    "$WILL_EXPIRE ${if (diffInDays.toInt() == 1) "$diffInDays DAY" else "$diffInDays DAYS"}"
                 }
-                else{
-                    status = "$WILL_EXPIRE $diffInDays DAYS"
-                }
+                else -> DEFAULT_STATUS
             }
+
             return status
         }
 
+        @SuppressLint("SimpleDateFormat")
         private fun getCurrentDate(): Date {
             val formatter: DateFormat = SimpleDateFormat("dd/MM/yyyy")
             val today = Date()
             return formatter.parse(formatter.format(today))
         }
+
         fun bind(note: NoteData) {
             val noteDescription = view.findViewById<TextView>(R.id.description_note)
             noteDescription.text = note.description
             val noteDate = view.findViewById<TextView>(R.id.date_note)
             noteDate.text = this.getDateStatusFormatted(note.date)
+            val noteCategory = view.findViewById<TextView>(R.id.category_note)
+            noteCategory.text = this.getCategoryNameFormatted(note.category)
         }
     }
 
