@@ -18,35 +18,28 @@ import java.util.concurrent.TimeUnit
 const val EXPIRED: String = "EXPIRED"
 const val WILL_EXPIRE: String = "EXPIRE IN"
 const val DEFAULT_STATUS: String = "EXPIRE TODAY"
+
 class NotesListAdapter(
-    private val data: List<NoteData>
+    private val data: List<NoteData>,
+    private val onNoteSelected: (NoteData) -> Unit
 ): RecyclerView.Adapter<NotesListAdapter.MyNoteViewHolder>() {
 
-    class MyNoteViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
-        val radioButton: RadioButton = itemView.findViewById(R.id.radio_note)
+    private var selectedPosition = -1
+
+    inner class MyNoteViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+        private val radioButton: RadioButton = itemView.findViewById(R.id.radio_note)
+
+        init {
+            radioButton.setOnClickListener {
+                selectedPosition = adapterPosition
+                notifyDataSetChanged()
+                onNoteSelected(data[selectedPosition])
+            }
+        }
 
         private fun getCategoryNameFormatted(categoryName: String): String {
             return "@$categoryName"
         }
-
-        //        private fun getDateStatusFormatted(date: Date): String {
-//            val currentDate = getCurrentDate()
-//            var status: String = DEFAULT_STATUS
-//            if(date == currentDate){
-//                status = DEFAULT_STATUS
-//            }else if (date.before(currentDate)) {
-//                status = EXPIRED
-//            } else if (date.after(currentDate)) {
-//                val diffInMillies = date.time - currentDate.time
-//                val diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)
-//                status = if(diffInDays.toInt() == 1){
-//                    "$WILL_EXPIRE $diffInDays DAY"
-//                } else{
-//                    "$WILL_EXPIRE $diffInDays DAYS"
-//                }
-//            }
-//            return status
-//        }
         private fun getDateStatusFormatted(date: Date): String {
             val currentDate = getCurrentDate()
             val status: String = when {
@@ -63,7 +56,6 @@ class NotesListAdapter(
             return status
         }
 
-        @SuppressLint("SimpleDateFormat")
         private fun getCurrentDate(): Date {
             val formatter: DateFormat = SimpleDateFormat("dd/MM/yyyy")
             val today = Date()
@@ -77,7 +69,16 @@ class NotesListAdapter(
             noteDate.text = this.getDateStatusFormatted(note.date)
             val noteCategory = view.findViewById<TextView>(R.id.category_note)
             noteCategory.text = this.getCategoryNameFormatted(note.category)
+
+            // Check the RadioButton if this item is the selected item
+            radioButton.isChecked = (selectedPosition == adapterPosition)
         }
+    }
+
+    // ...
+
+    fun getSelectedNote(): NoteData? {
+        return if (selectedPosition != -1) data[selectedPosition] else null
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyNoteViewHolder {
@@ -91,13 +92,79 @@ class NotesListAdapter(
 
     override fun onBindViewHolder(holder: MyNoteViewHolder, position: Int) {
         holder.bind(data[position])
-        holder.radioButton.setOnClickListener {
-            val value = data[position].noteId
-            Log.d("NotesListAdapter", "RadioButton clicked $value")
-        }
     }
-
-
-
 }
+
+
+
+
+
+//class NotesListAdapter(
+//    private val data: List<NoteData>
+//): RecyclerView.Adapter<NotesListAdapter.MyNoteViewHolder>() {
+//    private var lastChecked: RadioButton? = null
+//    inner class MyNoteViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+//        private val radioButton: RadioButton = itemView.findViewById(R.id.radio_note)
+//
+//        init {
+//            radioButton.setOnClickListener {
+//                lastChecked?.apply { isChecked = false }
+//                radioButton.isChecked = true
+//                lastChecked = radioButton
+//            }
+//        }
+//
+//        private fun getCategoryNameFormatted(categoryName: String): String {
+//            return "@$categoryName"
+//        }
+//
+//        private fun getDateStatusFormatted(date: Date): String {
+//            val currentDate = getCurrentDate()
+//            val status: String = when {
+//                date == currentDate -> DEFAULT_STATUS
+//                date.before(currentDate) -> EXPIRED
+//                date.after(currentDate) -> {
+//                    val diffInMillies = date.time - currentDate.time
+//                    val diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)
+//                    "$WILL_EXPIRE ${if (diffInDays.toInt() == 1) "$diffInDays DAY" else "$diffInDays DAYS"}"
+//                }
+//                else -> DEFAULT_STATUS
+//            }
+//
+//            return status
+//        }
+//
+//        private fun getCurrentDate(): Date {
+//            val formatter: DateFormat = SimpleDateFormat("dd/MM/yyyy")
+//            val today = Date()
+//            return formatter.parse(formatter.format(today))
+//        }
+//
+//        fun bind(note: NoteData) {
+//            val noteDescription = view.findViewById<TextView>(R.id.description_note)
+//            noteDescription.text = note.description
+//            val noteDate = view.findViewById<TextView>(R.id.date_note)
+//            noteDate.text = this.getDateStatusFormatted(note.date)
+//            val noteCategory = view.findViewById<TextView>(R.id.category_note)
+//            noteCategory.text = this.getCategoryNameFormatted(note.category)
+//
+//            // Reset the checked state when binding a new item
+//            radioButton.isChecked = false
+//        }
+//    }
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyNoteViewHolder {
+//        val v = LayoutInflater.from(parent.context).inflate(R.layout.note_cell_layout, parent, false)
+//        return MyNoteViewHolder(v)
+//    }
+//
+//    override fun getItemCount(): Int {
+//        return data.size
+//    }
+//
+//    override fun onBindViewHolder(holder: MyNoteViewHolder, position: Int) {
+//        holder.bind(data[position])
+//        Log.d("NotesListAdapter", "noteId ${data[position].noteId}")
+//    }
+//}
 

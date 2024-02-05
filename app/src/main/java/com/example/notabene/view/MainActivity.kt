@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private val notesViewModel: NotesViewModel by viewModel()
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeToRefreshLayout: SwipeRefreshLayout
-
+    private lateinit var noteAdapter: NotesListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,38 +58,23 @@ class MainActivity : AppCompatActivity() {
     private fun observeNoteLiveData() {
         notesViewModel.completeNotesList.observe(this@MainActivity) { notesCompleteData ->
             setUpNotesUserList(notesCompleteData)
-            Log.d("MainActivity", notesCompleteData.toString())
+//            Log.d("MainActivity", notesCompleteData.toString())
+
+            // Use getSelectedNote to get the selected note
+            val selectedNote = noteAdapter.getSelectedNote()
+            if (selectedNote != null) {
+                Log.d("MainActivity", "Selected noteId ${selectedNote.noteId}")
+            } else {
+                Log.d("MainActivity", "No note selected")
+            }
         }
     }
 
     private fun setUpNotesUserList(notes: List<NoteData>) {
-        val noteAdapter =  NotesListAdapter(notes)
+        noteAdapter =  NotesListAdapter(notes) { selectedNote ->
+            Log.d("MainActivity", "Selected noteId ${selectedNote.noteId}")
+        }
         recyclerView.layoutManager = LinearLayoutManager( this)
         recyclerView.adapter = noteAdapter
     }
-
-
-//    private val usersViewModel: NotesViewModel by viewModel();
-//    private lateinit var notesListRv: RecyclerView
-////    private lateinit var swipeToRefreshLayout: SwipeRefreshLayout;
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-//
-
-//
-//        this.notesListRv = findViewById(R.id.note_recycler_view)
-//        this.usersViewModel.getNotesByUserId("1");
-//        this.observeNotesLiveData()
-//    }
-//
-//    private fun setUpNotesUserList(notes: List<NoteDto>) {
-//        val notesAdapter = NotesListAdapter(notes);
-//        notesListRv.adapter = notesAdapter;
-//    }
-//    private fun observeNotesLiveData() {
-//        usersViewModel.completeNotesList.observe(this@MainActivity) {
-//            setUpNotesUserList(it)
-//        }
-//    }
 }
