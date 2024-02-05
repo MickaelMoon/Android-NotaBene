@@ -28,7 +28,12 @@ internal val coreModules = module {
             )
         )
     }
-    single { createWebService<LoginApiService>(get(named(ApiRetrofitClient))) }
+    single {
+        createWebService<LoginApiService>(
+            get(named(ApiRetrofitClient)
+            )
+        )
+    }
 
 }
 

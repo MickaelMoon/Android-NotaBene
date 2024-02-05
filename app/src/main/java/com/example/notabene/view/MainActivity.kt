@@ -2,12 +2,13 @@ package com.example.notabene.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.Button
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -17,6 +18,7 @@ import com.example.notabene.di.parseConfigurationAndAddItToInjectionModules
 import com.example.notabene.model.note_model.NoteData
 import com.example.notabene.view.adapters.NotesListAdapter
 import com.example.notabene.viewmodel.NotesViewModel
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -32,7 +34,14 @@ class MainActivity : AppCompatActivity() {
 
         this.createButton = findViewById(R.id.button_create_node)
         createButton.setOnClickListener {
-            this.notesViewModel.createNote("1")
+            lifecycleScope.launch {
+                try {
+                    val response = notesViewModel.createNote(1)
+                    Log.d("CreateNote", response.toString())
+                } catch (e: Exception) {
+                    Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_LONG).show()
+                }
+            }
         }
 
         parseConfigurationAndAddItToInjectionModules()

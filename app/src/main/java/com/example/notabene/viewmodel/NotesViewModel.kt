@@ -5,7 +5,9 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.notabene.model.note_model.CreateNoteResponse
 import com.example.notabene.model.note_model.NoteData
+import com.example.notabene.model.note_model.createNoteBody
 import com.example.notabene.repositories.NotesRepository
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.addTo
@@ -18,8 +20,6 @@ class NotesViewModel(
     private val notesRepo: NotesRepository,
 ): ViewModel() {
     private val disposeBag = CompositeDisposable()
-
-//    private val notesData = PublishSubject.create<List<NoteData>>()
 
     // Observables used by the view model to get the users infos only
     private val notesData: BehaviorSubject<List<NoteData>> = BehaviorSubject.createDefault(listOf())
@@ -53,10 +53,15 @@ class NotesViewModel(
         }).addTo(disposeBag)
     }
 
-    @SuppressLint("SimpleDateFormat")
-    fun createNote(userId: String) {
-        val date: Date = SimpleDateFormat("yyyy-MM-dd").parse("14-02-2024")
-        val noteData = NoteData(400, "Nico", "c nico qui a fait ca", userId.toInt(), 0, date, 1)
-        this.notesRepo.createNote(noteData)
+    suspend fun createNote(userId: Int): CreateNoteResponse {
+        val date: Date = SimpleDateFormat("dd/MM/yyyy").parse("01/01/2022")
+        val noteData = createNoteBody(
+            "Title",
+            "Description",
+            userId,
+            date,
+            1
+        )
+        return this.notesRepo.createNote(noteData)
     }
 }
