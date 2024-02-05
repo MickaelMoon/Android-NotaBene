@@ -39,3 +39,5 @@ build*
 bin/
 gen/
 out/
+.idea/deploymentTargetDropDown.xml
+.idea/misc.xml
