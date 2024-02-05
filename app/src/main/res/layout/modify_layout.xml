@@ -29,10 +29,11 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_max="340dp" />
 
-            <EditText
+            <CalendarView
                 android:id="@+id/editDate"
-                android:layout_width="122dp"
-                android:layout_height="51dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minDate="01/01/2024"
                 android:layout_marginTop="8dp"
                 android:hint="New Date"
                 app:layout_constraintLeft_toLeftOf="parent"
