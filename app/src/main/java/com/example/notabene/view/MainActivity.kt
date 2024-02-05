@@ -32,17 +32,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        this.createButton = findViewById(R.id.button_create_node)
-        createButton.setOnClickListener {
-            lifecycleScope.launch {
-                try {
-                    val response = notesViewModel.createNote(1)
-                    Log.d("CreateNote", response.toString())
-                } catch (e: Exception) {
-                    Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_LONG).show()
-                }
-            }
-        }
+//        this.createButton = findViewById(R.id.button_create_node)
+//        createButton.setOnClickListener {
+//            lifecycleScope.launch {
+//                try {
+//                    val response = notesViewModel.createNote(1)
+//                    Log.d("CreateNote", response.toString())
+//                } catch (e: Exception) {
+//                    Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_LONG).show()
+//                }
+//            }
+//        }
 
         parseConfigurationAndAddItToInjectionModules()
         injectModuleDependencies(this@MainActivity)
@@ -60,6 +60,11 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.button_login)
         button.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        val buttonAdd = findViewById<AppCompatImageButton>(R.id.button_create_node)
+        buttonAdd.setOnClickListener {
+            val intent = Intent(this, ModifyActivity::class.java)
             startActivity(intent)
         }
     }

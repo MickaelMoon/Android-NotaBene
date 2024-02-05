@@ -20,6 +20,14 @@
             android:exported="false"/>
 
         <activity
+            android:name=".view.ModifyActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".view.CreateActivity"
+            android:exported="false"/>
+
+        <activity
             android:name=".view.MainActivity"
             android:exported="true" >
             <intent-filter>
