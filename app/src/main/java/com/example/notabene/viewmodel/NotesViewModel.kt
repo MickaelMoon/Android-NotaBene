@@ -1,7 +1,6 @@
 package com.example.notabene.viewmodel
 
 
-import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -54,14 +53,14 @@ class NotesViewModel(
         }).addTo(disposeBag)
     }
 
-    suspend fun createNote(userId: Int): CreateNoteResponse {
-        val date: Date = SimpleDateFormat("dd/MM/yyyy").parse("01/01/2022")
+    suspend fun createNote(title: String, description: String, userId: Int, date: String, categoryId: Int): CreateNoteResponse {
+        val formatedDate: Date = SimpleDateFormat("dd/MM/yyyy").parse(date)
         val noteData = createNoteBody(
-            "Title",
-            "Description",
+            title,
+            description,
             userId,
-            date,
-            1
+            formatedDate,
+            1//categoryId
         )
         return this.notesRepo.createNote(noteData)
     }
