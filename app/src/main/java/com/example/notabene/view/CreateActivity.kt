@@ -3,6 +3,7 @@ package com.example.notabene.view
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -25,18 +26,16 @@ class CreateActivity(): AppCompatActivity() {
         injectModuleDependencies(this@CreateActivity)
 
         // get reference to all views
-        /*val title = findViewById<EditText>(R.id.editTitle)
-        val description = findViewById<EditText>(R.id.editDescription)
-        val date = findViewById<EditText>(R.id.editDate)
-        val categoryId = findViewById<EditText>(R.id.editCategory)
-        */
+        val title = findViewById<EditText>(R.id.editTitle).text
+        val description = findViewById<EditText>(R.id.editDescription).text
+        val date = findViewById<EditText>(R.id.editDate).text
         val createButton = findViewById<Button>(R.id.btnUpdate)
 
         // set on-click listener
         createButton.setOnClickListener {
             lifecycleScope.launch {
                 try {
-                    val response = notesViewModel.createNote("n", "nnn", 1, "14/12/2024", 1/*title.toString(), description.toString(), 1, date.toString(), categoryId.toString().toInt()*/)
+                    val response = notesViewModel.createNote(title.toString(), description.toString(), 1, date.toString(), 1)
                     Log.d("CreateNote", response.toString())
                 } catch (e: Exception) {
                     Log.d("CreateNote", e.message.toString())
