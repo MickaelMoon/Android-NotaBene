@@ -1,9 +1,11 @@
 package com.example.notabene.view.adapters
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notabene.R
@@ -21,6 +23,7 @@ class NotesListAdapter(
 ): RecyclerView.Adapter<NotesListAdapter.MyNoteViewHolder>() {
 
     class MyNoteViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+        val radioButton: RadioButton = itemView.findViewById(R.id.radio_note)
 
         private fun getCategoryNameFormatted(categoryName: String): String {
             return "@$categoryName"
@@ -88,6 +91,10 @@ class NotesListAdapter(
 
     override fun onBindViewHolder(holder: MyNoteViewHolder, position: Int) {
         holder.bind(data[position])
+        holder.radioButton.setOnClickListener {
+            val value = data[position].noteId
+            Log.d("NotesListAdapter", "RadioButton clicked $value")
+        }
     }
 
 
