@@ -9,6 +9,7 @@ data class NoteData (
     val userId: Int,
     val flagsup: Int,
     val date: Date,
-    val categoryId: Int
+    val categoryId: Int,
+    val category: String
 )
 

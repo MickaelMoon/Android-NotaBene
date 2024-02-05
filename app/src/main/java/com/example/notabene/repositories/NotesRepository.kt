@@ -23,4 +23,5 @@ class NotesRepository(
     suspend fun createNote(noteDate: createNoteBody): CreateNoteResponse {
         return this.noteService.createNote(noteDate)
     }
+
 }

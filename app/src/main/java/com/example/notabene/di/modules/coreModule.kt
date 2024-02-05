@@ -1,7 +1,9 @@
 package com.example.notabene.di.modules
 
+import com.example.notabene.network.services.CategoryApiService
 import com.example.notabene.network.services.LoginApiService
 import com.example.notabene.network.services.NoteApiService
+import com.example.notabene.repositories.CategoriesRepository
 import com.example.notabene.repositories.LoginRepository
 import com.example.notabene.repositories.NotesRepository
 import com.example.notabene.viewmodel.LoginViewModel
@@ -15,6 +17,7 @@ internal val coreModules = module {
     single { NotesRepository(get()) }
     single { LoginRepository(get()) }
 
+    single { CategoriesRepository(get()) }
 
     // Inject user view model
     single { NotesViewModel(get()) }
@@ -35,6 +38,14 @@ internal val coreModules = module {
         )
     }
 
+
+    single {
+        createWebService<CategoryApiService>(
+            get(
+                named(ApiRetrofitClient)
+            )
+        )
+    }
 }
 
 // Class representing the configuration to parse from the gradle file
