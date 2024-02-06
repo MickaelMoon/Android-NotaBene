@@ -53,14 +53,13 @@ class NotesViewModel(
         }).addTo(disposeBag)
     }
 
-    suspend fun createNote(title: String, description: String, userId: Int, date: String, categoryId: Int): CreateNoteResponse {
-        val formatedDate: Date = SimpleDateFormat("dd/MM/yyyy").parse(date)
+    suspend fun createNote(title: String, description: String, userId: Int, date: Date, categoryId: Int): CreateNoteResponse {
         val noteData = createNoteBody(
             title,
             description,
             userId,
-            formatedDate,
-            1//categoryId
+            date,
+            categoryId
         )
         return this.notesRepo.createNote(noteData)
     }

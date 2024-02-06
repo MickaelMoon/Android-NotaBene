@@ -21,7 +21,7 @@
             android:padding="8dp">
 
             <EditText
-                android:id="@+id/editTitle"
+                android:id="@+id/createTitle"
                 android:layout_width="114dp"
                 android:layout_height="54dp"
                 android:hint="New Title"
@@ -29,43 +29,44 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_max="340dp" />
 
-            <EditText
-                android:id="@+id/editDate"
-                android:layout_width="122dp"
-                android:layout_height="51dp"
+            <CalendarView
+                android:id="@+id/createDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minDate="01/01/2024"
                 android:layout_marginTop="8dp"
                 android:hint="New Date"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTitle"
+                app:layout_constraintTop_toBottomOf="@id/createTitle"
                 app:layout_constraintWidth_max="340dp" />
 
             <EditText
-                android:id="@+id/editDescription"
+                android:id="@+id/createDescription"
                 android:layout_width="144dp"
                 android:layout_height="73dp"
                 android:layout_marginTop="8dp"
                 android:hint="New Description"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editDate"
+                app:layout_constraintTop_toBottomOf="@id/createDate"
                 app:layout_constraintWidth_max="340dp" />
 
             <EditText
-                android:id="@+id/editCategory"
+                android:id="@+id/createCategory"
                 android:layout_width="135dp"
                 android:layout_height="63dp"
                 android:layout_marginTop="8dp"
                 android:hint="New Category"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editDescription"
+                app:layout_constraintTop_toBottomOf="@id/createDescription"
                 app:layout_constraintWidth_max="340dp" />
 
             <Button
-                android:id="@+id/btnUpdate"
+                android:id="@+id/btnCreate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="256dp"
                 android:layout_marginTop="16dp"
-                android:text="Update"
+                android:text="Create"
                 android:textColor="@color/text_adaptive_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
