@@ -44,7 +44,7 @@
             android:textSize="12sp"
             app:layout_constraintLeft_toRightOf="@id/radio_note"
             app:layout_constraintTop_toBottomOf="@id/category_note"
-            android:textColor="@color/primary100"
+            android:textColor="@color/primary"
             android:fontFamily="@font/poppins_regular"
             android:layout_marginStart="5dp"/>
         <TextView
