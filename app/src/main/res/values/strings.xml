@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NotaBene</string>
     <string name="category_name">\@Courses</string>
+    <string name="login_button_text">Log in</string>
 </resources>
