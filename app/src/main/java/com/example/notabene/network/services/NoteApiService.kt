@@ -34,4 +34,9 @@ interface NoteApiService {
     suspend fun deleteNote(
         @Path("noteId") noteId: Int,
     ): ChangeNoteResponse
+
+    @GET("/note/getNotesDeletedByUser/{userId}")
+    fun getDeletedNotesByUserId(
+        @Path("userId") userId: String,
+    ): Flowable<List<NoteData>>
 }

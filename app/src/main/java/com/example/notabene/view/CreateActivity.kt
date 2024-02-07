@@ -79,6 +79,7 @@ class CreateActivity() : AppCompatActivity() {
                             category
                         )
                     )
+                    Toast.makeText(this@CreateActivity, "Note created successfully!", Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
                     Log.d("CreateNote", e.message.toString())
                     Toast.makeText(this@CreateActivity, "Creation failed", Toast.LENGTH_LONG).show()

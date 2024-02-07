@@ -80,6 +80,8 @@ class MainActivity : AppCompatActivity() {
 
                         // Refresh the list of notes
                         notesViewModel.getNotesByUserId(userId.toString())
+                        Toast.makeText(this@MainActivity, "Note deleted successfully!", Toast.LENGTH_LONG).show()
+
                     } catch (e: Exception) {
                         Toast.makeText(this@MainActivity, "Deletion failed", Toast.LENGTH_LONG).show()
                     }
