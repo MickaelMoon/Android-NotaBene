@@ -58,7 +58,7 @@ class CreateActivity() : AppCompatActivity() {
                             title,
                             description,
                             1,
-                            date,
+                            date.toString(),
                             categoryId
                         )
                         Log.d("CreateNote", response.toString())
