@@ -25,23 +25,13 @@
             android:layout_weight="0.80"
             android:textColor="@color/text"
             android:fontFamily="@font/poppins_bold"/>
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/button_filter_node"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/bg_adaptive_color"
-            android:clickable="true"
-            app:layout_constraintLeft_toRightOf="@id/title_app"
-            android:contentDescription="TODO"
-            android:src="@drawable/baseline_filter_list"
-            android:tint="@color/text_adaptive_color" />
+
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/button_historical_node"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/bg_adaptive_color"
             android:clickable="true"
-            app:layout_constraintLeft_toRightOf="@id/button_filter_node"
             android:contentDescription="TODO"
             android:src="@drawable/baseline_historical"
             android:tint="@color/text_adaptive_color" />
@@ -54,6 +44,13 @@
             android:backgroundTint="@color/primary"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:defaultQueryHint="Recherche par category"
+        />
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -20,7 +20,7 @@ const val WILL_EXPIRE: String = "EXPIRE IN"
 const val DEFAULT_STATUS: String = "EXPIRE TODAY"
 
 class NotesListAdapter(
-    private val data: List<NoteData>,
+    private var data: List<NoteData>,
     private val onNoteSelected: (NoteData) -> Unit
 ): RecyclerView.Adapter<NotesListAdapter.MyNoteViewHolder>() {
 
@@ -92,6 +92,11 @@ class NotesListAdapter(
 
     override fun onBindViewHolder(holder: MyNoteViewHolder, position: Int) {
         holder.bind(data[position])
+    }
+
+    fun setFilteredList(filteredList: ArrayList<NoteData>) {
+        this.data = filteredList
+        notifyDataSetChanged()
     }
 }
 

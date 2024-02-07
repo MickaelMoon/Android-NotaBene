@@ -21,7 +21,7 @@ class NotesViewModel(
     private val disposeBag = CompositeDisposable()
 
     // Observables used by the view model to get the users infos only
-    private val notesData: BehaviorSubject<List<NoteData>> = BehaviorSubject.createDefault(listOf())
+    val notesData: BehaviorSubject<List<NoteData>> = BehaviorSubject.createDefault(listOf())
 
     val completeNotesList: MutableLiveData<List<NoteData>> = MutableLiveData()
 
