@@ -75,6 +75,7 @@ class ModifyActivity(): AppCompatActivity() {
                         ),
                         noteId!!
                     )
+                    Toast.makeText(this@ModifyActivity, "Note updated", Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
                     Toast.makeText(this@ModifyActivity, "Error updating note", Toast.LENGTH_SHORT).show()
                 }
