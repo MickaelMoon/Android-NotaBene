@@ -7,5 +7,5 @@ data class createNoteBody(
     val description: String,
     val userId: Int,
     val date: Date,
-    val categoryId: Int
+    val category: String
 )

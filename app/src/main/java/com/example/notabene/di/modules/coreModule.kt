@@ -4,9 +4,11 @@ import com.example.notabene.network.services.CategoryApiService
 import com.example.notabene.network.services.LoginApiService
 import com.example.notabene.network.services.NoteApiService
 import com.example.notabene.repositories.CategoriesRepository
+import com.example.notabene.repositories.CreateRepository
 import com.example.notabene.repositories.LoginRepository
 import com.example.notabene.repositories.ModifyRepository
 import com.example.notabene.repositories.NotesRepository
+import com.example.notabene.viewmodel.CreateViewModel
 import com.example.notabene.viewmodel.LoginViewModel
 import com.example.notabene.viewmodel.ModifyViewModel
 import com.example.notabene.viewmodel.NotesViewModel
@@ -19,6 +21,7 @@ internal val coreModules = module {
     single { NotesRepository(get()) }
     single { LoginRepository(get()) }
     single { ModifyRepository(get()) }
+    single { CreateRepository(get()) }
 
     single { CategoriesRepository(get()) }
 
@@ -26,6 +29,7 @@ internal val coreModules = module {
     single { NotesViewModel(get()) }
     single { LoginViewModel(get()) }
     single { ModifyViewModel(get()) }
+    single { CreateViewModel(get()) }
 
     // Webservices
     single {

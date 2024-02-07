@@ -63,8 +63,8 @@ class NotesListAdapter(
         }
 
         fun bind(note: NoteData) {
-            val noteDescription = view.findViewById<TextView>(R.id.description_note)
-            noteDescription.text = note.description
+            val noteTitle = view.findViewById<TextView>(R.id.title_note)
+            noteTitle.text = note.title
             val noteDate = view.findViewById<TextView>(R.id.date_note)
             noteDate.text = this.getDateStatusFormatted(note.date)
             val noteCategory = view.findViewById<TextView>(R.id.category_note)

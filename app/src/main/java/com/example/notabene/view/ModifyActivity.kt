@@ -24,14 +24,20 @@ import java.util.Locale
 
 class ModifyActivity(): AppCompatActivity() {
     private val modifyViewModel: ModifyViewModel by viewModel()
+    private var userId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.modify_layout)
 
+        parseConfigurationAndAddItToInjectionModules()
+        injectModuleDependencies(this@ModifyActivity)
+
         val noteId = intent?.getIntExtra("noteId", -1)
+        userId = intent?.getIntExtra("userId", -1)!!
         val editTitle: EditText = findViewById(R.id.editTitle)
         val editDescription: EditText = findViewById(R.id.editDescription)
+        val editCategory: EditText = findViewById(R.id.editCategory)
         val calendarView: CalendarView = findViewById(R.id.editDate)
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance()
@@ -50,6 +56,7 @@ class ModifyActivity(): AppCompatActivity() {
                     val myNote = note[0]
                     editTitle.setText(myNote.title)
                     editDescription.setText(myNote.description)
+                    editCategory.setText(myNote.category)
                     calendarView.date = myNote.date.time
                 }
             }.addTo(this.modifyViewModel.disposeBag)
@@ -64,14 +71,15 @@ class ModifyActivity(): AppCompatActivity() {
                     val title = editTitle.text.toString()
                     val description = editDescription.text.toString()
                     val date = Date(calendarView.date)
+                    val category = editCategory.text.toString()
                     Log.d("date", Date(calendarView.date).toString())
                     modifyViewModel.updateNote(
                         createNoteBody(
                             title,
                             description,
-                            1,
+                            userId,
                             date,
-                            1
+                            category
                         ),
                         noteId!!
                     )
@@ -82,8 +90,5 @@ class ModifyActivity(): AppCompatActivity() {
             }
             finish()
         }
-
-        parseConfigurationAndAddItToInjectionModules()
-        injectModuleDependencies(this@ModifyActivity)
     }
 }

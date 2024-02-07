@@ -24,7 +24,7 @@
         />
 
         <TextView
-            android:id="@+id/description_note"
+            android:id="@+id/title_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Faire les courses pour l'anniversaire de Erwan"
@@ -54,7 +54,7 @@
             android:text="@string/category_name"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@id/radio_note"
-            app:layout_constraintTop_toBottomOf="@id/description_note"
+            app:layout_constraintTop_toBottomOf="@id/title_note"
             android:textColor="@color/note_category1"
             android:fontFamily="@font/poppins_bold"
             android:layout_marginStart="5dp"/>

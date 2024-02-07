@@ -18,9 +18,7 @@ class NotesRepository(
         }
     }
 
-    suspend fun createNote(noteDate: createNoteBody): ChangeNoteResponse {
-        return this.noteService.createNote(noteDate)
-    }
+
     suspend fun deleteNote(noteId: Int): ChangeNoteResponse {
         return this.noteService.deleteNote(noteId)
     }

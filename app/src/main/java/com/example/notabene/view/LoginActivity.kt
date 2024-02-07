@@ -1,5 +1,6 @@
 package com.example.notabene.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -47,7 +48,9 @@ class LoginActivity: AppCompatActivity() {
                 try {
                     val response = loginViewModel.login(login, password)
                     if(response.message == "Success") {
-                        Toast.makeText(this@LoginActivity, "Login success", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        intent.putExtra("userId", response.userId)
+                        startActivity(intent)
                     }
                 } catch (e: Exception) {
                     Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_LONG).show()

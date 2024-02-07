@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var swipeToRefreshLayout: SwipeRefreshLayout
     private lateinit var noteAdapter: NotesListAdapter
     private lateinit var searchView: SearchView
-
+    private var userId:Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,23 +40,22 @@ class MainActivity : AppCompatActivity() {
         parseConfigurationAndAddItToInjectionModules()
         injectModuleDependencies(this@MainActivity)
 
-
+        this.userId = intent?.getIntExtra("userId", -1)!!
+        Log.d("userId", userId.toString())
+        if(userId == -1) {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
         this.recyclerView = findViewById(R.id.note_recycler_view)
         this.swipeToRefreshLayout = findViewById(R.id.swipe_to_refresh_layout)
         this.searchView = findViewById(R.id.search_view)
 
         this.swipeToRefreshLayout.setOnRefreshListener {
-            this.notesViewModel.getNotesByUserId("1")
+            this.notesViewModel.getNotesByUserId(userId.toString())
             this.swipeToRefreshLayout.isRefreshing = false
         }
 
         this.observeNoteLiveData()
-
-        val button = findViewById<Button>(R.id.button_login)
-        button.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
 
         val buttonModify = findViewById<AppCompatImageButton>(R.id.button_edit_node)
         buttonModify.setOnClickListener {
@@ -64,6 +63,7 @@ class MainActivity : AppCompatActivity() {
             if(node != null) {
                 val intent = Intent(this, ModifyActivity::class.java)
                 intent.putExtra("noteId", node.noteId)
+                intent.putExtra("userId", userId)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Please select a note to modify", Toast.LENGTH_LONG).show()
@@ -76,9 +76,10 @@ class MainActivity : AppCompatActivity() {
             if(node != null) {
                 lifecycleScope.launch {
                     try {
-                        val response = notesViewModel.deleteNote(node.noteId)
+                        notesViewModel.deleteNote(node.noteId)
+
                         // Refresh the list of notes
-                        notesViewModel.getNotesByUserId("1")
+                        notesViewModel.getNotesByUserId(userId.toString())
                     } catch (e: Exception) {
                         Toast.makeText(this@MainActivity, "Deletion failed", Toast.LENGTH_LONG).show()
                     }
@@ -91,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         val createButton = findViewById<AppCompatImageButton>(R.id.button_create_node)
         createButton.setOnClickListener {
             val intent = Intent(this, CreateActivity::class.java)
+            intent.putExtra("userId", userId)
             startActivity(intent)
         }
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
@@ -107,7 +109,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private val mList: MutableLiveData<List<NoteData>> = MutableLiveData()
+    override fun onResume() {
+        super.onResume()
+        this.notesViewModel.getNotesByUserId(userId.toString())
+    }
+
     private fun filterList(query: String?){
         if(query != null){
             val filteredList = ArrayList<NoteData>()
