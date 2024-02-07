@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.LoginActivity">
     <LinearLayout
         android:id="@+id/ll_main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="#444444"
+        android:background="@color/bg_adaptive_color"
         android:padding="25dp"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:textColor="#6dffbf"
-            android:padding="30dp"
-            android:text="Login"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/notabene_image"
+            android:layout_marginBottom="10dp"
+            app:shapeAppearanceOverlay="@style/Rounded"
+            />
         <EditText
             android:id="@+id/et_user_name"
             android:hint="User Name"
-            android:textColor="#6bfff7"
-            android:textColorHint="#52afaa"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/primary"
             android:textAlignment="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"/>
         <EditText
             android:id="@+id/et_password"
             android:hint="Password"
-            android:textColor="#6bfff7"
-            android:textColorHint="#52afaa"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/primary"
             android:textAlignment="center"
             android:inputType="textPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,10 +48,14 @@
             android:orientation="horizontal">
             <Button
                 android:id="@+id/btn_submit"
-                android:text="Login"
+                android:text="@string/login_button_text"
+                android:textSize="20sp"
                 android:textAllCaps="false"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:textColor="@color/still_white"
+                android:fontFamily="@font/poppins_bold"/>
         </LinearLayout>
     </LinearLayout>
 

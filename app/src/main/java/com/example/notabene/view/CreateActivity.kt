@@ -1,5 +1,6 @@
 package com.example.notabene.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -16,41 +17,59 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Objects
 
-class CreateActivity(): AppCompatActivity() {
+class CreateActivity() : AppCompatActivity() {
     private val notesViewModel: NotesViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.modify_layout)
+        setContentView(R.layout.create_layout)
 
         parseConfigurationAndAddItToInjectionModules()
         injectModuleDependencies(this@CreateActivity)
 
         // get reference to all views
-        val title = findViewById<EditText>(R.id.editTitle).text
-        val description = findViewById<EditText>(R.id.editDescription).text
+        val newCategory = findViewById<EditText>(R.id.createCategory)
+        val newTitle = findViewById<EditText>(R.id.createTitle).text
+        val newDescription = findViewById<EditText>(R.id.createDescription).text
 //        val date = findViewById<EditText>(R.id.editDate).text
-        val date = findViewById<CalendarView>(R.id.editDate).date.toString()
-        val formatedDate: Date = SimpleDateFormat("dd/MM/yyyy").parse(date)
-        val categoryId = findViewById<EditText>(R.id.editCategory).text
+        val calendarView = findViewById<CalendarView>(R.id.createDate)
 
-        val createButton = findViewById<Button>(R.id.btnUpdate)
+        val createButton = findViewById<Button>(R.id.btnCreate)
 
         // set on-click listener
         createButton.setOnClickListener {
+
+            val title = newTitle.toString()
+            val description = newDescription.toString()
+            val selectedDate = calendarView.date
+            val categoryText = newCategory.text.toString()
+            val categoryId = categoryText.toInt()
+            val date = Date(selectedDate)
             lifecycleScope.launch {
                 try {
-                    Log.d("date", formatedDate.toString())
-                    val response = notesViewModel.createNote(title.toString(), description.toString(), 1, formatedDate.toString(), 1)
-                    Log.d("CreateNote", response.toString())
+                    if (!title.isEmpty() && !description.isEmpty()
+                        && !categoryText.isEmpty()
+                        && !Objects.isNull(selectedDate)) {
+                        Log.d("date", date.toString())
+                        val response = notesViewModel.createNote(
+                            title,
+                            description,
+                            1,
+                            date,
+                            categoryId
+                        )
+                        Log.d("CreateNote", response.toString())
+                        finish()
+                    }
                 } catch (e: Exception) {
                     Log.d("CreateNote", e.message.toString())
                     Toast.makeText(this@CreateActivity, "Creation failed", Toast.LENGTH_LONG).show()
                 }
-            }
 
+            }
         }
     }
 }

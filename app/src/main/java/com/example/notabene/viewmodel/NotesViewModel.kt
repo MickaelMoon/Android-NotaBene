@@ -59,8 +59,8 @@ class NotesViewModel(
             title,
             description,
             userId,
-            formatedDate,
-            1//categoryId
+            date,
+            categoryId
         )
         return this.notesRepo.createNote(noteData)
     }
