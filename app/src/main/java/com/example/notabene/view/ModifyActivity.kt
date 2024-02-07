@@ -1,5 +1,6 @@
 package com.example.notabene.view
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -32,6 +33,12 @@ class ModifyActivity(): AppCompatActivity() {
 
         parseConfigurationAndAddItToInjectionModules()
         injectModuleDependencies(this@ModifyActivity)
+
+        val myLocale = Locale("fr") // French
+        Locale.setDefault(myLocale)
+        val config = Configuration()
+        config.locale = myLocale
+        resources.updateConfiguration(config, resources.displayMetrics)
 
         val noteId = intent?.getIntExtra("noteId", -1)
         userId = intent?.getIntExtra("userId", -1)!!

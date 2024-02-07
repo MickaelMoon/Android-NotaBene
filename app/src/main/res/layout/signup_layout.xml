@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.LoginActivity">
+    tools:context=".view.SignupActivity">
     <LinearLayout
         android:id="@+id/ll_main_layout"
         android:layout_width="match_parent"
@@ -53,22 +53,10 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primary"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/login_button_text"
-                android:textAllCaps="false"
-                android:textColor="@color/still_white"
-                android:textSize="20sp"/>
-
-            <Button
-                android:id="@+id/btnRegister"
-                android:layout_width="178dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:backgroundTint="@color/primary"
-                android:fontFamily="@font/poppins_bold"
                 android:text="S'inscrire"
                 android:textAllCaps="false"
                 android:textColor="@color/still_white"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
         </LinearLayout>
     </LinearLayout>
 

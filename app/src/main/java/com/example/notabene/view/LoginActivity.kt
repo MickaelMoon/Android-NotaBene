@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.notabene.R
@@ -34,16 +35,13 @@ class LoginActivity: AppCompatActivity() {
         injectModuleDependencies(this@LoginActivity)
 
         // get reference to all views
-        var et_user_name = findViewById(R.id.et_user_name) as EditText
-        var et_password = findViewById(R.id.et_password) as EditText
-        var btn_submit = findViewById(R.id.btn_submit) as Button
+        val etUsername = findViewById<EditText>(R.id.etUsername)
+        val etPassword = findViewById<EditText>(R.id.etPassword)
+        val btnSubmit = findViewById<Button>(R.id.btnSubmit)
 
-
-
-        // set on-click listener
-        btn_submit.setOnClickListener {
-            val login = et_user_name.text.toString()
-            val password = et_password.text.toString()
+        btnSubmit.setOnClickListener {
+            val login = etUsername.text.toString()
+            val password = etPassword.text.toString()
             lifecycleScope.launch {
                 try {
                     val response = loginViewModel.login(login, password)
@@ -56,7 +54,12 @@ class LoginActivity: AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_LONG).show()
                 }
             }
-
+        }
+        val btnRegister = findViewById<Button>(R.id.btnRegister)
+        btnRegister.setOnClickListener {
+            Log.d("Register", "Register")
+            val intentRegister = Intent(this, SignupActivity::class.java)
+            startActivity(intentRegister)
         }
     }
 }
