@@ -136,6 +136,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeNoteLiveData() {
         notesViewModel.completeNotesList.observe(this@MainActivity) { notesCompleteData ->
             setUpNotesUserList(notesCompleteData)
+            this.swipeToRefreshLayout.isRefreshing = false
 //            Log.d("MainActivity", notesCompleteData.toString())
 
         }
