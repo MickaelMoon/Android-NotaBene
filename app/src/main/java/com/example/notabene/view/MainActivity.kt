@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         this.swipeToRefreshLayout.setOnRefreshListener {
             this.notesViewModel.getNotesByUserId("1")
+            this.swipeToRefreshLayout.isRefreshing = false
         }
 
         this.observeNoteLiveData()
