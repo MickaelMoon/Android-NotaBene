@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             })
             Log.d("mList", mList.toString())
             for(i in mList){
-                if(i.category.lowercase().contains(query)){
+                if(i.category.lowercase().contains(query) || i.category.contains(query)){
                     filteredList.add(i)
                 }
             }

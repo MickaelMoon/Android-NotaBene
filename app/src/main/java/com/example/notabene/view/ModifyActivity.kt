@@ -79,7 +79,7 @@ class ModifyActivity(): AppCompatActivity() {
                     Toast.makeText(this@ModifyActivity, "Error updating note", Toast.LENGTH_SHORT).show()
                 }
             }
-
+            finish()
         }
 
         parseConfigurationAndAddItToInjectionModules()
