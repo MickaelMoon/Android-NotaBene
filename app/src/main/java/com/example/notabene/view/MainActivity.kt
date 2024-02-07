@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -15,6 +17,7 @@ import com.example.notabene.di.parseConfigurationAndAddItToInjectionModules
 import com.example.notabene.model.note_model.NoteData
 import com.example.notabene.view.adapters.NotesListAdapter
 import com.example.notabene.viewmodel.NotesViewModel
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -47,6 +50,36 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val buttonModify = findViewById<AppCompatImageButton>(R.id.button_edit_node)
+        buttonModify.setOnClickListener {
+            val node = noteAdapter.getSelectedNote()
+            if(node != null) {
+                val intent = Intent(this, ModifyActivity::class.java)
+                intent.putExtra("noteId", node.noteId)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Please select a note to modify", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val deleteButton = findViewById<AppCompatImageButton>(R.id.button_delete_node)
+        deleteButton.setOnClickListener{
+            val node = noteAdapter.getSelectedNote()
+            if(node != null) {
+                lifecycleScope.launch {
+                    try {
+                        val response = notesViewModel.deleteNote(node.noteId)
+                        // Refresh the list of notes
+                        notesViewModel.getNotesByUserId("1")
+                    } catch (e: Exception) {
+                        Toast.makeText(this@MainActivity, "Deletion failed", Toast.LENGTH_LONG).show()
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Please select a note to delete", Toast.LENGTH_LONG).show()
+            }
+        }
+
         val createButton = findViewById<AppCompatImageButton>(R.id.button_create_node)
         createButton.setOnClickListener {
             val intent = Intent(this, CreateActivity::class.java)
@@ -60,13 +93,6 @@ class MainActivity : AppCompatActivity() {
             setUpNotesUserList(notesCompleteData)
 //            Log.d("MainActivity", notesCompleteData.toString())
 
-            // Use getSelectedNote to get the selected note
-            val selectedNote = noteAdapter.getSelectedNote()
-            if (selectedNote != null) {
-                Log.d("MainActivity", "Selected noteId ${selectedNote.noteId}")
-            } else {
-                Log.d("MainActivity", "No note selected")
-            }
         }
     }
 

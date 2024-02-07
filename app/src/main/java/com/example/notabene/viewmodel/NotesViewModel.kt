@@ -4,7 +4,7 @@ package com.example.notabene.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.notabene.model.note_model.CreateNoteResponse
+import com.example.notabene.model.note_model.ChangeNoteResponse
 import com.example.notabene.model.note_model.NoteData
 import com.example.notabene.model.note_model.createNoteBody
 import com.example.notabene.repositories.NotesRepository
@@ -53,7 +53,7 @@ class NotesViewModel(
         }).addTo(disposeBag)
     }
 
-    suspend fun createNote(title: String, description: String, userId: Int, date: String, categoryId: Int): CreateNoteResponse {
+    suspend fun createNote(title: String, description: String, userId: Int, date: String, categoryId: Int): ChangeNoteResponse {
         val formatedDate: Date = SimpleDateFormat("dd/MM/yyyy").parse(date)
         val noteData = createNoteBody(
             title,
@@ -63,5 +63,9 @@ class NotesViewModel(
             1//categoryId
         )
         return this.notesRepo.createNote(noteData)
+    }
+
+    suspend fun deleteNote(noteId: Int): ChangeNoteResponse {
+        return this.notesRepo.deleteNote(noteId)
     }
 }

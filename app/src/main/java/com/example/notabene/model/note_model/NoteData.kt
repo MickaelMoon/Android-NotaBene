@@ -4,8 +4,8 @@ import java.util.Date
 
 data class NoteData (
     val noteId: Int,
-    val title: String,
-    val description: String,
+    var title: String,
+    var description: String,
     val userId: Int,
     val flagsup: Int,
     val date: Date,
