@@ -16,7 +16,7 @@
         android:padding="8dp">
         <RadioButton
             android:id="@+id/radio_note"
-            android:layout_width="35dp"
+            android:layout_width="48dp"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
