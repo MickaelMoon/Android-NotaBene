@@ -90,9 +90,9 @@ class ModifyActivity(): AppCompatActivity() {
                         ),
                         noteId!!
                     )
-                    Toast.makeText(this@ModifyActivity, "Note updated", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ModifyActivity, "La note a été modifié", Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
-                    Toast.makeText(this@ModifyActivity, "Error updating note", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ModifyActivity, "Erreur lors de la modification", Toast.LENGTH_SHORT).show()
                 }
             }
             finish()

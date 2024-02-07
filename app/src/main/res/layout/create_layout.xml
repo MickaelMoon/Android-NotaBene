@@ -31,7 +31,7 @@
                 android:layout_height="49dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:hint="New Title"
+                android:hint="Nouveau Titre"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_max="340dp" />
@@ -42,7 +42,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
-                android:hint="New Date"
                 android:minDate="01/01/2024"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/createTitle"
@@ -54,7 +53,7 @@
                 android:layout_height="49dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
-                android:hint="New Description"
+                android:hint="Nouvelle Description"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/createDate"
                 app:layout_constraintWidth_max="340dp" />
@@ -65,7 +64,7 @@
                 android:layout_height="49dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:hint="New Category"
+                android:hint="Nouvelle Catégorie"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/createDescription"
                 app:layout_constraintWidth_max="340dp" />
@@ -76,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="252dp"
                 android:layout_marginTop="16dp"
-                android:text="Update"
+                android:text="Enregister"
                 android:textColor="@color/text_adaptive_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
