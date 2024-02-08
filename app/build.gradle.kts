@@ -64,7 +64,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 
     // HTTP
-    implementation("com.google.code.gson:gson:2.8.9") // Serialization to and from JSON
+    implementation("com.google.code.gson:gson:2.10") // Serialization to and from JSON
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -72,8 +72,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // Viewmodel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation("androidx.activity:activity-ktx:1.8.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.activity:activity-ktx:1.8.2")
 
     // HTTP Client
     implementation("com.squareup.okhttp3:okhttp:4.10.0")

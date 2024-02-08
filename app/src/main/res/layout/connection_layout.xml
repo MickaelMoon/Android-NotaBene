@@ -27,9 +27,11 @@
             android:textColor="@color/primary"
             android:textColorHint="@color/primary"
             android:textAlignment="center"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:fontFamily="@font/poppins_semibold"
+            android:autofillHints="username"/>
         <EditText
             android:id="@+id/etPassword"
             android:hint="@string/password"
@@ -39,7 +41,8 @@
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:fontFamily="@font/poppins_semibold"
+            android:autofillHints="name"/>
             <Button
                 android:id="@+id/btnSubmit"
                 android:layout_width="wrap_content"
