@@ -21,12 +21,4 @@ class NotesRepository(
     suspend fun deleteNote(noteId: Int): ChangeNoteResponse {
         return this.noteService.deleteNote(noteId)
     }
-
-    fun getDeletedNotesByUserId(userId: String): Flowable<List<NoteData>> {
-        return noteService.getDeletedNotesByUserId(
-            userId,
-        ).map {
-            it
-        }
-    }
 }
