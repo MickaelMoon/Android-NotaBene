@@ -32,7 +32,6 @@
             android:fontFamily="@font/poppins_semibold"/>
         <EditText
             android:id="@+id/etPassword"
-            android:hint="Password"
             android:textColor="@color/primary"
             android:textColorHint="@color/primary"
             android:textAlignment="center"
