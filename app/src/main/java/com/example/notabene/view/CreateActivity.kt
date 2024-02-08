@@ -1,6 +1,7 @@
 package com.example.notabene.view
 
 import android.app.AlertDialog
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -21,6 +22,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Objects
+import java.util.Locale
 
 class CreateActivity() : AppCompatActivity() {
     private val createViewModel: CreateViewModel by viewModel()
@@ -32,6 +34,12 @@ class CreateActivity() : AppCompatActivity() {
 
         parseConfigurationAndAddItToInjectionModules()
         injectModuleDependencies(this@CreateActivity)
+
+        val myLocale = Locale("fr") // French
+        Locale.setDefault(myLocale)
+        val config = Configuration()
+        config.locale = myLocale
+        resources.updateConfiguration(config, resources.displayMetrics)
 
         userId = intent?.getIntExtra("userId", -1)!!
         // get reference to all views
@@ -71,10 +79,9 @@ class CreateActivity() : AppCompatActivity() {
                             category
                         )
                     )
-                    Toast.makeText(this@CreateActivity, "Note created successfully!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@CreateActivity, "La note a été enregistrée", Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
-                    Log.d("CreateNote", e.message.toString())
-                    Toast.makeText(this@CreateActivity, "Creation failed", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@CreateActivity, "La création a échouée", Toast.LENGTH_LONG).show()
                 }
             }
             finish()

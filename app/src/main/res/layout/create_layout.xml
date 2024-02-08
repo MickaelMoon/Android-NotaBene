@@ -10,21 +10,28 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_width="384dp"
+        android:layout_height="629dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="387dp"
+            android:layout_height="654dp"
             android:padding="8dp">
 
             <EditText
                 android:id="@+id/createTitle"
-                android:layout_width="114dp"
-                android:layout_height="54dp"
-                android:hint="New Title"
+                android:layout_width="340dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="Nouveau Titre"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_max="340dp" />
@@ -33,29 +40,31 @@
                 android:id="@+id/createDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
                 android:minDate="01/01/2024"
-                android:layout_marginTop="8dp"
-                android:hint="New Date"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/createTitle"
                 app:layout_constraintWidth_max="340dp" />
 
             <EditText
                 android:id="@+id/createDescription"
-                android:layout_width="144dp"
-                android:layout_height="73dp"
-                android:layout_marginTop="8dp"
-                android:hint="New Description"
+                android:layout_width="339dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:hint="Nouvelle Description"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/createDate"
                 app:layout_constraintWidth_max="340dp" />
 
             <EditText
                 android:id="@+id/createCategory"
-                android:layout_width="135dp"
-                android:layout_height="63dp"
+                android:layout_width="340dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:hint="New Category"
+                android:hint="Nouvelle Catégorie"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/createDescription"
                 app:layout_constraintWidth_max="340dp" />
@@ -64,15 +73,15 @@
                 android:id="@+id/btnCreate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="256dp"
+                android:layout_marginLeft="252dp"
                 android:layout_marginTop="16dp"
-                android:text="Create"
+                android:text="Enregister"
                 android:textColor="@color/text_adaptive_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.94" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

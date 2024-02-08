@@ -28,7 +28,7 @@
             android:id="@+id/description_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/faire_les_courses_pour_l_anniversaire_de_erwan"
+            android:text="@string/title_note"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/delete_img"
             app:layout_constraintTop_toTopOf="parent"
@@ -41,12 +41,11 @@
             android:id="@+id/date_note"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/in_two_weeks"
+            android:text="@string/duration_field_note"
             android:textSize="12sp"
             app:layout_constraintLeft_toRightOf="@id/delete_img"
             app:layout_constraintTop_toBottomOf="@id/category_note"
             android:textColor="@color/primary"
-            android:fontFamily="@font/poppins_regular"
             android:layout_marginStart="5dp"/>
         <TextView
             android:id="@+id/category_note"

@@ -20,14 +20,14 @@
             android:layout_height="48dp"
             android:backgroundTint="@color/bg_adaptive_color"
             android:clickable="true"
-            android:contentDescription="TODO"
+            android:contentDescription="@string/todo"
             android:src="@drawable/baseline_keyboard_backspace"
             android:tint="@color/text_adaptive_color" />
         <TextView
             android:id="@+id/title_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/historique_des_notes_supprimees"
+            android:text="@string/historical_title_view"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_weight="0.80"
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/note_recycler_view"
+                android:id="@+id/historical_note_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/historical_note_cell_layout"

@@ -1,5 +1,6 @@
 package com.example.notabene.view
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -32,6 +33,12 @@ class ModifyActivity(): AppCompatActivity() {
 
         parseConfigurationAndAddItToInjectionModules()
         injectModuleDependencies(this@ModifyActivity)
+
+        val myLocale = Locale("fr") // French
+        Locale.setDefault(myLocale)
+        val config = Configuration()
+        config.locale = myLocale
+        resources.updateConfiguration(config, resources.displayMetrics)
 
         val noteId = intent?.getIntExtra("noteId", -1)
         userId = intent?.getIntExtra("userId", -1)!!
@@ -83,9 +90,9 @@ class ModifyActivity(): AppCompatActivity() {
                         ),
                         noteId!!
                     )
-                    Toast.makeText(this@ModifyActivity, "Note updated", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ModifyActivity, "La note a été modifié", Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
-                    Toast.makeText(this@ModifyActivity, "Error updating note", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ModifyActivity, "Erreur lors de la modification", Toast.LENGTH_SHORT).show()
                 }
             }
             finish()
