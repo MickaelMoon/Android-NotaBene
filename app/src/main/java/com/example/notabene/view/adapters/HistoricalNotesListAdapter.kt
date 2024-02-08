@@ -65,4 +65,9 @@ class HistoricalNotesListAdapter(
     override fun onBindViewHolder(holder: MyNoteViewHolder, position: Int) {
         holder.bind(data[position])
     }
+
+    fun setFilteredList(filteredList: ArrayList<NoteData>) {
+        this.data = filteredList
+        notifyDataSetChanged()
+    }
 }
