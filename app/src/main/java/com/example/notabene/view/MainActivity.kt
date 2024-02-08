@@ -3,12 +3,10 @@ package com.example.notabene.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,10 +18,8 @@ import com.example.notabene.di.parseConfigurationAndAddItToInjectionModules
 import com.example.notabene.model.note_model.NoteData
 import com.example.notabene.view.adapters.NotesListAdapter
 import com.example.notabene.viewmodel.NotesViewModel
-import io.reactivex.rxjava3.kotlin.addTo
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -109,6 +105,11 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        val historyButton = findViewById<AppCompatImageButton>(R.id.button_historical_node)
+        historyButton.setOnClickListener {
+            val intent = Intent(this, HistoricalActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {
