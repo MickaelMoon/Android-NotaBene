@@ -40,13 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="25dp"
-            android:orientation="horizontal">
-
             <Button
                 android:id="@+id/btnSubmit"
                 android:layout_width="wrap_content"
@@ -56,20 +49,21 @@
                 android:text="@string/login_button_text"
                 android:textAllCaps="false"
                 android:textColor="@color/still_white"
-                android:textSize="20sp"/>
-
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                />
             <Button
                 android:id="@+id/btnRegister"
                 android:layout_width="178dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/primary"
                 android:fontFamily="@font/poppins_bold"
                 android:text="S'inscrire"
                 android:textAllCaps="false"
                 android:textColor="@color/still_white"
                 android:textSize="20sp" />
-        </LinearLayout>
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
