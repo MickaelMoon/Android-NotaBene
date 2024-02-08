@@ -1,7 +1,6 @@
 package com.example.notabene.view.adapters
 
-import android.annotation.SuppressLint
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +14,9 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.concurrent.TimeUnit
 
-const val EXPIRED: String = "EXPIRED"
-const val WILL_EXPIRE: String = "EXPIRE IN"
-const val DEFAULT_STATUS: String = "EXPIRE TODAY"
+const val EXPIRED: String = "EXPIRÉE"
+const val WILL_EXPIRE: String = "EXPIRE DANS"
+const val DEFAULT_STATUS: String = "EXPIRE AUJOURD'HUI"
 
 class NotesListAdapter(
     private var data: List<NoteData>,
@@ -48,7 +47,7 @@ class NotesListAdapter(
                 date.after(currentDate) -> {
                     val diffInMillies = date.time - currentDate.time
                     val diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS)
-                    "$WILL_EXPIRE ${if (diffInDays.toInt() == 1) "$diffInDays DAY" else "$diffInDays DAYS"}"
+                    "$WILL_EXPIRE ${if (diffInDays.toInt() == 1) "$diffInDays JOUR" else "$diffInDays JOURS"}"
                 }
                 else -> DEFAULT_STATUS
             }
