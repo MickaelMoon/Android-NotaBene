@@ -8,7 +8,6 @@
     android:layout_marginEnd="10dp"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="8dp"
-
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,7 +26,7 @@
             android:id="@+id/title_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Faire les courses pour l'anniversaire de Erwan"
+            android:text="@string/faire_les_courses_pour_l_anniversaire_de_erwan"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/radio_note"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,7 +39,7 @@
             android:id="@+id/date_note"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="IN TWO WEEKS"
+            android:text="@string/in_two_weeks"
             android:textSize="12sp"
             app:layout_constraintLeft_toRightOf="@id/radio_note"
             app:layout_constraintTop_toBottomOf="@id/category_note"
