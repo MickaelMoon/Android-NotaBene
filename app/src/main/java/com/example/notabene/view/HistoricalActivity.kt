@@ -36,7 +36,7 @@ class HistoricalActivity : AppCompatActivity() {
         injectModuleDependencies(this@HistoricalActivity)
 
         Log.d("HistoryActivity : userId", userId.toString())
-
+        this.searchView = findViewById(R.id.search_view)
         this.recyclerView = findViewById(R.id.historical_note_recycler_view)
 
         this.swipeToRefreshLayout = findViewById(R.id.swipe_to_refresh_layout)
