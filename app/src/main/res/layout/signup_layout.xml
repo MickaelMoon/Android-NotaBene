@@ -33,6 +33,7 @@
         <EditText
             android:id="@+id/etPassword"
             android:textColor="@color/primary"
+            android:hint="@string/password"
             android:textColorHint="@color/primary"
             android:textAlignment="center"
             android:inputType="textPassword"

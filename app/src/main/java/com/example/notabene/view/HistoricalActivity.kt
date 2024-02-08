@@ -3,6 +3,8 @@ package com.example.notabene.view
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -33,6 +35,7 @@ class HistoricalActivity : AppCompatActivity() {
         Log.d("HistoryActivity : userId", userId.toString())
 
         this.recyclerView = findViewById(R.id.historical_note_recycler_view)
+
         this.swipeToRefreshLayout = findViewById(R.id.swipe_to_refresh_layout)
 
         this.swipeToRefreshLayout.setOnRefreshListener {
@@ -40,6 +43,12 @@ class HistoricalActivity : AppCompatActivity() {
             this.swipeToRefreshLayout.isRefreshing = false
         }
         this.observeNoteLiveData()
+
+        val quitView = findViewById<AppCompatImageButton>(R.id.quit_view)
+        quitView.setOnClickListener{
+            finish()
+        }
+
     }
 
     override fun onResume() {
