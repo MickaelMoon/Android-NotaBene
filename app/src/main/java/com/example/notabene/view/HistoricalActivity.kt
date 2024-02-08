@@ -25,10 +25,11 @@ class HistoricalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.historical_layout)
 
+        this.userId = intent?.getIntExtra("userId", -1)!!
+
         parseConfigurationAndAddItToInjectionModules()
         injectModuleDependencies(this@HistoricalActivity)
 
-        this.userId = intent?.getIntExtra("userId", -1)!!
         Log.d("HistoryActivity : userId", userId.toString())
 
         this.recyclerView = findViewById(R.id.historical_note_recycler_view)

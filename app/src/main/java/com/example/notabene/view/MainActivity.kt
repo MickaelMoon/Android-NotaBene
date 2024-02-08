@@ -108,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         val historyButton = findViewById<AppCompatImageButton>(R.id.button_historical_node)
         historyButton.setOnClickListener {
             val intent = Intent(this, HistoricalActivity::class.java)
+            intent.putExtra("userId", userId)
             startActivity(intent)
         }
     }

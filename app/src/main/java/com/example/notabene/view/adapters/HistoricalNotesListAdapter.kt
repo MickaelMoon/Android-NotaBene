@@ -1,5 +1,6 @@
 package com.example.notabene.view.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,14 +44,13 @@ class HistoricalNotesListAdapter(
         }
 
         fun bind(note: NoteData) {
-            val noteTitle = view.findViewById<TextView>(R.id.title_note)
+            Log.d("NoteData", note.toString())
+            val noteTitle = view.findViewById<TextView>(R.id.title_note_delete)
             noteTitle.text = note.title
-            val noteDate = view.findViewById<TextView>(R.id.date_note)
+            val noteDate = view.findViewById<TextView>(R.id.date_note_delete)
             noteDate.text = this.getDateStatusFormatted(note.date)
-            val noteCategory = view.findViewById<TextView>(R.id.category_note)
+            val noteCategory = view.findViewById<TextView>(R.id.category_note_delete)
             noteCategory.text = this.getCategoryNameFormatted(note.category)
-
-            // Check the RadioButton if this item is the selected item
         }
     }
 

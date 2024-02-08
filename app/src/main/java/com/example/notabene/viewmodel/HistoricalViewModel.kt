@@ -19,7 +19,7 @@ class HistoricalViewModel(
     val completeNotesList: MutableLiveData<List<NoteData>> = MutableLiveData()
 
     fun getDeletedNotesByUserId(userId: String) {
-        this.notesRepo.getDeletedNotesByUserId("1").subscribe({ notes ->
+        this.notesRepo.getDeletedNotesByUserId(userId).subscribe({ notes ->
             this.notesData.onNext(notes)
             Log.d("Deleted notes", notes.toString())
             this.completeNotesList.postValue(List<NoteData>(notes.size) {
