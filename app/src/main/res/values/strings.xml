@@ -5,4 +5,8 @@
     <string name="in_two_weeks">DANS DEUX SEMAINES</string>
     <string name="faire_les_courses_pour_l_anniversaire_de_erwan">Faire les courses pour l\'anniversaire de Erwan</string>
     <string name="historique_des_notes_supprimees">Historique des notes supprimées :</string>
+    <string name="todo">TODO</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="sinscrire">S\'inscrire</string>
 </resources>
