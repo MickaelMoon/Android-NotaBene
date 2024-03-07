@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">NotaBene</string>
+    <string name="category_name">\@Courses</string>
+    <string name="login_button_text">Se connecter</string>
+    <string name="duration_field_note">DANS DEUX SEMAINES</string>
+    <string name="title_note">Faire les courses pour l\'anniversaire de Erwan</string>
+    <string name="historical_title_view">Historique des notes supprimées :</string>
+    <string name="todo">TODO</string>
+    <string name="user_name">Nom d\'utilisateur</string>
+    <string name="password">Mot de passe</string>
+    <string name="signup">S\'inscrire</string>
+    <string name="inscription">Inscription</string>
+    <string name="search_by">Recherche par categorie</string>
 </resources>

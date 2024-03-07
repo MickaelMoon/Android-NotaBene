@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="outline">#4DFFFFFF</color>
+    <color name="text_adaptive_color">#FFFFFF</color>
+    <color name="invisible">#00000000</color>
+    <color name="bg_adaptive_color">#2E2E2E</color>
+    <color name="text">#d9d8f8</color>
+    <color name="primary">#1EAD6C</color>
+    <color name="primary5">#0D941951</color>
+    <color name="note_category1">#195F94</color>
+    <color name="note_category2">#309419</color>
+    <color name="note_category3">#946719</color>
+    <color name="note_category4">#941988</color>
+</resources>

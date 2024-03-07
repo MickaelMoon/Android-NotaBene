@@ -1,15 +1,43 @@
+/build
+/.idea
+# Gradle files
+.gradle/
+build/
+
+# IntelliJ IDEA files
+.idea/
+
+# Compiled Kotlin files
+*.class
+
+# Compiled Java files
+*.jar
+*.war
+*.ear
+
+# Android Studio files
 *.iml
 .gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
 /.idea/workspace.xml
+/.idea/libraries
+/.idea/caches
+/.idea/modules.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+/.idea/dictionaries
+/.idea/vcs.xml
+/.idea/jsLibraryMappings.xml
+/app/build.*
+build*
+
+# Keystore files
+*.jks
+*.jks.properties
+
+# Generated files
+bin/
+gen/
+out/
+.idea/deploymentTargetDropDown.xml
+.idea/misc.xml
