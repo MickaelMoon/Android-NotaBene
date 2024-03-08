@@ -34,6 +34,7 @@
                 android:hint="Nouveau Titre"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:inputType="text"
                 app:layout_constraintWidth_max="340dp" />
 
             <CalendarView
@@ -56,6 +57,7 @@
                 android:hint="Nouvelle Description"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/createDate"
+                android:inputType="text"
                 app:layout_constraintWidth_max="340dp" />
 
             <EditText
@@ -67,6 +69,7 @@
                 android:hint="Nouvelle Catégorie"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/createDescription"
+                android:inputType="text"
                 app:layout_constraintWidth_max="340dp" />
 
             <Button
